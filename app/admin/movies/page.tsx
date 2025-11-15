@@ -23,7 +23,7 @@ interface Movie {
   isTrending: boolean
 }
 
-const CATEGORIES = ["Action", "Romance", "Animation", "Horror", "Special", "Drabor", "Comedy", "Drama"]
+const CATEGORIES = ["Action", "Romance", "Animation", "Horror", "Special", "Drabor", "Comedy", "Drama", "Nigerian"]
 
 export default function MoviesManagement() {
   const { user, loading, isAdmin } = useAuth()

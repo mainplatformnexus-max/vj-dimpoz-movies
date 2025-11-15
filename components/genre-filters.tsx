@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Flame, Swords, Heart, Sparkles, Ghost, Star, Moon } from "lucide-react"
+import { Flame, Swords, Heart, Sparkles, Ghost, Star, Moon, Flag } from "lucide-react"
 
 const genres = [
   { id: "Trending", name: "Trending", icon: Flame },
@@ -11,6 +11,7 @@ const genres = [
   { id: "Horror", name: "Horror", icon: Ghost },
   { id: "Special", name: "Special", icon: Star },
   { id: "Drabor", name: "Drabor", icon: Moon },
+  { id: "Nigerian", name: "Nigerian", icon: Flag },
 ]
 
 interface GenreFiltersProps {

@@ -22,7 +22,7 @@ interface Original {
   streamlink: string
 }
 
-const CATEGORIES = ["Action", "Romance", "Animation", "Horror", "Special", "Drabor", "Comedy", "Drama"]
+const CATEGORIES = ["Action", "Romance", "Animation", "Horror", "Special", "Drabor", "Comedy", "Drama", "Nigerian"]
 
 export default function OriginalsManagement() {
   const { user, loading, isAdmin } = useAuth()

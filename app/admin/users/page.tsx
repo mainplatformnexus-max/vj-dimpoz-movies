@@ -7,6 +7,7 @@ import AdminNav from "@/components/admin-nav"
 import { Card } from "@/components/ui/card"
 import { database } from "@/lib/firebase"
 import { SUBSCRIPTION_PLANS } from "@/lib/subscription-context"
+import { intervalToDuration } from "date-fns"
 import { ref as dbRef, get } from "firebase/database"
 import { Users, Calendar, Mail, CheckCircle, XCircle } from "lucide-react"
 
@@ -192,9 +193,36 @@ export default function UsersManagement() {
                           <div className="text-right">
                             <p className="text-white/60 text-xs uppercase tracking-wider">Expires</p>
                             <p className="text-white text-sm mt-1">
-                              {userItem.subscription.expiresAt
-                                ? new Date(userItem.subscription.expiresAt).toLocaleDateString()
-                                : "N/A"}
+                                {userItem.subscription.expiresAt ? (
+                                  (() => {
+                                    try {
+                                      const expires = new Date(userItem.subscription.expiresAt as string)
+                                      const now = new Date()
+                                      if (isNaN(expires.getTime())) return "N/A"
+
+                                      if (expires > now) {
+                                        const dur = intervalToDuration({ start: now, end: expires })
+                                        const days = dur.days || 0
+                                        const hours = dur.hours || 0
+                                        const minutes = dur.minutes || 0
+                                        if (days > 0) return `${days}d ${hours}h left`
+                                        if (hours > 0) return `${hours}h ${minutes}m left`
+                                        return `${minutes}m left`
+                                      } else {
+                                        const dur = intervalToDuration({ start: expires, end: now })
+                                        const days = dur.days || 0
+                                        const hours = dur.hours || 0
+                                        if (days > 0) return `Expired ${days}d ${hours}h ago`
+                                        if (hours > 0) return `Expired ${hours}h ago`
+                                        return `Expired`
+                                      }
+                                    } catch (e) {
+                                      return "N/A"
+                                    }
+                                  })()
+                                ) : (
+                                  "N/A"
+                                )}
                             </p>
                           </div>
                         </div>

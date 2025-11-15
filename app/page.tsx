@@ -3,10 +3,10 @@
 import { useState } from "react"
 import { useAuth } from "@/lib/auth-context"
 import { useRouter } from "next/navigation"
-import Header from "@/components/header"
 import FeaturedCarousel from "@/components/featured-carousel"
 import GenreFilters from "@/components/genre-filters"
 import TrendingGrid from "@/components/trending-grid"
+import RightPanel from "@/components/right-panel"
 
 export default function Home() {
   const { loading } = useAuth()
@@ -25,16 +25,21 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-600 to-slate-700">
-      <Header />
-      <div className="pt-6 sm:pt-8">
-        <FeaturedCarousel />
-      </div>
-      <div className="px-0 py-6 sm:py-8">
-        <GenreFilters onCategoryChange={setSelectedCategory} />
-      </div>
-      <div className="py-8 sm:py-12">
-        <TrendingGrid selectedCategory={selectedCategory} />
+    <main className="min-h-screen">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-6">
+        <section>
+          <div className="pt-6 sm:pt-8">
+            <FeaturedCarousel />
+          </div>
+          <div className="px-0 py-6 sm:py-8">
+            <GenreFilters onCategoryChange={setSelectedCategory} />
+          </div>
+          <div className="py-8 sm:py-12">
+            <TrendingGrid selectedCategory={selectedCategory} />
+          </div>
+        </section>
+
+        <RightPanel />
       </div>
     </main>
   )
