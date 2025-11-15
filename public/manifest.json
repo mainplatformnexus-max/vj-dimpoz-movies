@@ -1,0 +1,42 @@
+{
+  "name": "DIMPOZ MOVIES - Stream & Download",
+  "short_name": "DIMPOZ",
+  "description": "Stream and download your favorite movies and shows",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#ef4444",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["entertainment", "video", "movies"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Browse Movies",
+      "short_name": "Movies",
+      "description": "Browse all movies",
+      "url": "/?tab=movies",
+      "icons": []
+    },
+    {
+      "name": "Browse Series",
+      "short_name": "Series",
+      "description": "Browse all series",
+      "url": "/?tab=series",
+      "icons": []
+    }
+  ]
+}
